@@ -1,0 +1,18 @@
+README.md
+bootstrap.sh
+LICENSE
+.github/**
+
+{{ if ne .chezmoi.os "darwin" }}
+.chezmoiscripts/*macos*
+Library/**
+{{ end }}
+
+{{ if not .prefs.fancy_prompt }}
+**/*prompt*
+.config/starship.toml
+{{ end }}
+
+{{ if not .prefs.atuin_history }}
+.config/atuin/**
+{{ end }}

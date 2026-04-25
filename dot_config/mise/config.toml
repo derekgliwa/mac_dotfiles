@@ -1,0 +1,14 @@
+# User-wide defaults. Project mise.toml files override these.
+# Name backends explicitly so supply chain is auditable.
+
+[settings]
+experimental = true
+
+[tools]
+"core:node"   = "lts"
+"core:python" = "3.12"
+"core:go"     = "latest"
+
+"aqua:cli/cli"                  = "latest" # gh
+"npm:@anthropic-ai/claude-code" = "latest"
+"cargo:uv"                      = "latest"

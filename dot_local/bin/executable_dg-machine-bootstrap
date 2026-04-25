@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# First-time setup on a fresh machine. Idempotent — safe to re-run.
+# Override the dotfiles repo via DG_DOTFILES_REPO env var.
+set -euo pipefail
+
+repo="${DG_DOTFILES_REPO:-<you>}"
+
+if ! command -v brew >/dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  [[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+  [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+brew install chezmoi mise
+chezmoi init --apply "$repo"
+
+printf "\n✓ bootstrap complete — open a new shell to pick up mise + zsh modules.\n"

@@ -1,0 +1,13 @@
+# Prompted on `chezmoi init`; answers land in ~/.config/chezmoi/chezmoi.yml.
+# Re-run `chezmoi init` any time to change answers.
+data:
+  name: {{ promptString "Git name" (dig "name" "" .) | quote }}
+  email: {{ promptString "Git email" (dig "email" "" .) | quote }}
+  github_username: {{ promptString "GitHub username" (dig "github_username" "" .) | quote }}
+  prefs:
+    fancy_prompt: {{ promptBool "Use starship prompt?" (dig "prefs" "fancy_prompt" true .) }}
+    atuin_history: {{ promptBool "Use atuin for shell history?" (dig "prefs" "atuin_history" true .) }}
+{{- if eq .chezmoi.os "darwin" }}
+  macos:
+    set_defaults: {{ promptBool "Apply opinionated macOS defaults?" (dig "macos" "set_defaults" false .) }}
+{{- end }}

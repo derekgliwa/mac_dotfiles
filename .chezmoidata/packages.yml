@@ -1,0 +1,21 @@
+# Single source of truth for brew packages.
+# Edited here → next `chezmoi apply` reruns the install script (hash change).
+brews:
+  # Shell
+  - starship
+  - atuin
+  - zoxide
+  # CLI replacements
+  - bat
+  - eza
+  - fd
+  - ripgrep
+  # Git
+  - git
+  - gh
+  - git-delta
+  # Dev
+  - jq
+  - yq
+  - neovim
+  - tmux

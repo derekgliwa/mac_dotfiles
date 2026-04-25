@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Reruns whenever packages.yml content changes (hash baked into this comment):
+# packages hash: {{ include ".chezmoidata/packages.yml" | sha256sum }}
+set -euo pipefail
+
+brews=(
+{{- range .brews }}
+  "{{ . }}"
+{{- end }}
+)
+
+for pkg in "${brews[@]}"; do
+  brew list --formula "$pkg" >/dev/null 2>&1 || brew install "$pkg"
+done

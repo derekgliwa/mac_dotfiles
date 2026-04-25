@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Re-apply committed source to $HOME. Idempotent. Run when `dg machine status`
+# reports drift, or after editing files in the chezmoi source directly.
+set -euo pipefail
+
+printf "==> chezmoi apply\n"
+chezmoi apply
+
+if command -v mise >/dev/null; then
+  printf "\n==> mise install\n"
+  mise install
+fi
+
+printf "\n✓ repair complete\n"

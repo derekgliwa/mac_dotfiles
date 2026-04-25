@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Personal CLI dispatcher. `dg foo bar baz` runs the longest-matching
+# `dg-foo-bar-baz` on PATH, falling back to shorter prefixes. Remaining
+# args are passed through.
+set -euo pipefail
+
+if [[ $# -eq 0 ]]; then
+  printf "Usage: dg <command> [args...]\n\nCommands:\n"
+  compgen -c dg- | sort -u | sed 's/^dg-/  /' | tr '-' ' '
+  exit 0
+fi
+
+parts=("$@")
+for ((i=${#parts[@]}; i>0; i--)); do
+  prefix="$(IFS=-; echo "${parts[*]:0:$i}")"
+  target="dg-$prefix"
+  if command -v "$target" >/dev/null 2>&1; then
+    exec "$target" "${parts[@]:$i}"
+  fi
+done
+
+printf "dg: unknown command: %s\n" "${parts[*]}" >&2
+exit 1

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Launch OpenCode against a local Ollama model with git-ai attribution
+# tagged to the specific model — so `git-ai stats --json` can tell you
+# which model wrote which lines.
+#
+# Usage: oc-local [model]
+#   oc-local                        # default: qwen3-coder:30b
+#   oc-local qwen2.5-coder:14b
+set -euo pipefail
+
+model="${1:-qwen3-coder:30b}"
+export GIT_AI_CUSTOM_ATTRIBUTES="{\"runtime\":\"local\",\"backend\":\"ollama\",\"model\":\"$model\"}"
+exec opencode --model "ollama/$model"

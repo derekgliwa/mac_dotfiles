@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Pull newer sources + upgrade pinned tools.
+# Difference from `repair`: repair syncs source → home; update pulls new source first.
+set -euo pipefail
+
+printf "==> chezmoi update (git pull + apply)\n"
+chezmoi update
+
+printf "\n==> brew update && upgrade\n"
+brew update
+brew upgrade
+
+if command -v mise >/dev/null; then
+  printf "\n==> mise upgrade\n"
+  mise upgrade
+fi
+
+printf "\n✓ update complete\n"

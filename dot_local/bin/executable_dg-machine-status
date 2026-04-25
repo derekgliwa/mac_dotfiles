@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Health check. Exit 0 when healthy. `--quiet` suppresses output on success —
+# safe to drop in shell startup.
+set -euo pipefail
+
+quiet=false
+[[ "${1:-}" == "--quiet" ]] && quiet=true
+
+warn() { $quiet || printf "⚠  %s\n" "$*" >&2; }
+say()  { $quiet || printf "%s\n" "$*"; }
+problems=0
+
+if command -v chezmoi >/dev/null; then
+  if [[ -n "$(chezmoi status 2>/dev/null || true)" ]]; then
+    warn "chezmoi: source differs from home (dg machine repair)"
+    problems=$((problems+1))
+  fi
+fi
+
+if command -v mise >/dev/null; then
+  if [[ -n "$(mise ls --missing 2>/dev/null || true)" ]]; then
+    warn "mise: tools missing in $(pwd) (mise install)"
+    problems=$((problems+1))
+  fi
+fi
+
+if [[ $problems -eq 0 ]]; then
+  say "✓ machine healthy"
+  exit 0
+fi
+exit 1

@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+{{- if .prefs.fancy_prompt }}
+command -v starship >/dev/null && eval "$(starship init zsh)"
+{{- end }}
+{{- if .prefs.atuin_history }}
+command -v atuin >/dev/null && eval "$(atuin init zsh)"
+{{- end }}
+command -v zoxide >/dev/null && eval "$(zoxide init zsh)"

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Verbose diagnostic. Runs the underlying doctors + shows drift + versions.
+set -euo pipefail
+
+printf "==> chezmoi doctor\n"
+chezmoi doctor || true
+
+printf "\n==> chezmoi status (files needing apply)\n"
+chezmoi status || true
+
+printf "\n==> mise doctor\n"
+mise doctor || true
+
+printf "\n==> mise ls --missing (cwd: %s)\n" "$(pwd)"
+mise ls --missing || true
+
+printf "\n==> versions\n"
+printf "brew    %s\n" "$(brew --version 2>/dev/null | head -1)"
+printf "chezmoi %s\n" "$(chezmoi --version 2>/dev/null | head -1)"
+printf "mise    %s\n" "$(mise --version 2>/dev/null | head -1)"
