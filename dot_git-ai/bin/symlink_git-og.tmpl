@@ -1,0 +1,1 @@
+{{ if eq .chezmoi.os "darwin" }}{{ if eq .chezmoi.arch "arm64" }}/opt/homebrew/bin/git{{ else }}/usr/local/bin/git{{ end }}{{ else }}/home/linuxbrew/.linuxbrew/bin/git{{ end }}

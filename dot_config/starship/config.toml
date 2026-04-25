@@ -1,0 +1,26 @@
+# Managed by chezmoi — do not edit directly.
+
+# Custom prompt layout based on the pure-preset
+format       = "$username$hostname$directory$git_branch$git_state$git_status$cmd_duration$line_break$mise$character"
+right_format = "$time"
+
+# Some repos are slow to load git info
+command_timeout = 1000
+
+# Show mise tool health on the prompt line. Pairs with `dg machine status`:
+# the asterisk surfaces missing/outdated tools every prompt, not just on demand.
+[mise]
+disabled         = false
+format           = "[$symbol](dimmed)[$health](218) "
+symbol           = "mise"
+healthy_symbol   = ""
+unhealthy_symbol = "*"
+
+# Add time for easily assembling timelines
+[time]
+disabled = false
+style    = "dimmed"
+
+# Simplify directory display
+[directory]
+truncate_to_repo = false

@@ -10,7 +10,7 @@ Library/**
 
 {{ if not .prefs.fancy_prompt }}
 **/*prompt*
-.config/starship.toml
+.config/starship/**
 {{ end }}
 
 {{ if not .prefs.atuin_history }}

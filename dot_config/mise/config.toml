@@ -1,14 +1,33 @@
 # User-wide defaults. Project mise.toml files override these.
-# Name backends explicitly so supply chain is auditable.
+# For personal overrides, drop files in ~/.config/mise/conf.d/*.toml.
+#
+# Name backends explicitly (e.g. "core:node" instead of "node") so reviewers
+# can see exactly where each tool is installed from. Avoid backends that
+# pull in transitive dependency trees (e.g. "npm:"); when unavoidable, pin
+# the version instead of tracking latest.
+#
+# Backend & security references:
+#   - Backends overview:  https://mise.jdx.dev/dev-tools/backends/
+#   - Core tools:         https://mise.jdx.dev/core-tools.html
+#   - Registry:           https://mise.jdx.dev/registry.html
+#   - GitHub backend:     https://mise.jdx.dev/dev-tools/backends/github.html
+#   - Aqua backend:       https://mise.jdx.dev/dev-tools/backends/aqua.html
+#   - Security model:     https://github.com/jdx/mise/blob/main/SECURITY.md
 
 [settings]
-experimental = true
+install_before = "3d"
 
 [tools]
+# Languages
 "core:node"   = "lts"
 "core:python" = "3.12"
 "core:go"     = "latest"
 
-"aqua:cli/cli"                  = "latest" # gh
-"npm:@anthropic-ai/claude-code" = "latest"
-"cargo:uv"                      = "latest"
+# General CLI tooling
+"aqua:cli/cli"                     = "latest" # gh
+"github:withgraphite/homebrew-tap" = "latest" # gt
+"npm:@anthropic-ai/claude-code"    = "latest"
+"cargo:uv"                         = "latest"
+
+# GitHub Release artifact attestations verified by mise
+"github:git-ai-project/git-ai" = "latest"
