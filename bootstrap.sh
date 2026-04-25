@@ -13,6 +13,6 @@ fi
 brew install chezmoi mise
 
 # 3. Pull + apply dotfiles. Replace <you> with your GitHub username.
-chezmoi init --apply <you>
+chezmoi init --apply
 
 echo "Done. Open a new shell to pick up mise + zsh modules."
