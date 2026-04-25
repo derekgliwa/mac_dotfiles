@@ -19,3 +19,6 @@ brews:
   - yq
   - neovim
   - tmux
+  - opencode
+  - node
+  - ada-url
