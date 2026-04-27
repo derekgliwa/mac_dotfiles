@@ -12,7 +12,15 @@ fi
 # 2. Minimum viable tools to run chezmoi
 brew install chezmoi mise
 
-# 3. Pull + apply dotfiles. Replace <you> with your GitHub username.
-chezmoi init --apply
+# 3. Interactive repo selection
+read -p "Enter your dotfiles repo URL (or GitHub username for github.com/\$USERNAME/dotfiles): " REPO
+
+# Handle shorthand GitHub usernames
+if [[ ! "$REPO" =~ ^https?:// ]] && [[ ! "$REPO" =~ / ]]; then
+  REPO="$REPO"  # chezmoi will expand it to github.com/$REPO/dotfiles
+fi
+
+# 4. Apply
+chezmoi init --apply "$REPO"
 
 echo "Done. Open a new shell to pick up mise + zsh modules."
