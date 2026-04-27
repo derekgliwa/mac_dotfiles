@@ -3,7 +3,7 @@
 A starter chezmoi + mise + Homebrew setup. Replace `<you>` in `bootstrap.sh` with your GitHub username, push this repo, then on a new machine run:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/<you>/mac_dotfiles/main/bootstrap.sh | bash -s
+curl -fsSL https://raw.githubusercontent.com/<you>/mac_dotfiles/main/bootstrap.sh | bash -s -- https://github.com/<you>/mac_dotfiles
 ```
 
 ## Layout
