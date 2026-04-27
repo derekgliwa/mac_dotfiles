@@ -12,12 +12,17 @@ fi
 # 2. Minimum viable tools to run chezmoi
 brew install chezmoi mise
 
-# 3. Interactive repo selection
-read -p "Enter your dotfiles repo URL (or GitHub username for github.com/\$USERNAME/dotfiles): " REPO
-
-# Handle shorthand GitHub usernames
-if [[ ! "$REPO" =~ ^https?:// ]] && [[ ! "$REPO" =~ / ]]; then
-  REPO="$REPO"  # chezmoi will expand it to github.com/$REPO/dotfiles
+# 3. Interactive repo selection (with fallback to env var)
+REPO="${1:-}"
+if [[ -z "$REPO" ]]; then
+  # Try to read interactively if stdin is available
+  if [[ -t 0 ]]; then
+    read -p "Enter your dotfiles repo URL (or GitHub username): " REPO
+  else
+    echo "Error: No repo provided and stdin is not interactive."
+    echo "Usage: curl -fsSL https://raw.githubusercontent.com/<you>/mac_dotfiles/main/bootstrap.sh | bash -s -- <repo>"
+    exit 1
+  fi
 fi
 
 # 4. Apply
