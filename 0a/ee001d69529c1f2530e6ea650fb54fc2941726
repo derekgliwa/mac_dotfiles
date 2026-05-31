@@ -1,0 +1,19 @@
+README.md
+  ai_agent 16,21-86
+dot_zshrc.d/10.history.zsh
+  ai_agent 1-13
+dot_zshrc.d/40.plugins.zsh
+  ai_agent 1-13
+dot_zsh_plugins.txt
+  ai_agent 1-6
+.chezmoidata/packages.yml
+  ai_agent 5
+dot_zshrc.d/20.completions.zsh
+  ai_agent 1-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "0aee001d69529c1f2530e6ea650fb54fc2941726",
+  "prompts": {}
+}
