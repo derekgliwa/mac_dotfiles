@@ -1,0 +1,6 @@
+# antidote plugin bundle, loaded by ~/.zshrc.d/40.plugins.zsh.
+# One plugin per line. fast-syntax-highlighting must come before
+# zsh-autosuggestions so it wraps the suggestion widgets correctly.
+zdharma-continuum/fast-syntax-highlighting
+zsh-users/zsh-autosuggestions
+hlissner/zsh-autopair

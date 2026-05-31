@@ -2,6 +2,7 @@
 # Edited here → next `chezmoi apply` reruns the install script (hash change).
 brews:
   # Shell
+  - antidote   # zsh plugin manager (autosuggestions, syntax highlighting)
   - starship
   - atuin
   - zoxide
