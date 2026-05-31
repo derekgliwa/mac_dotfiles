@@ -31,3 +31,4 @@ install_before = "3d"
 
 # GitHub Release artifact attestations verified by mise
 "github:git-ai-project/git-ai" = "latest"
+rust = "latest"
