@@ -26,6 +26,7 @@ install_before = "3d"
 # General CLI tooling
 "aqua:cli/cli"                     = "latest" # gh
 "github:withgraphite/homebrew-tap" = "latest" # gt
+"npm:@mariozechner/pi-coding-agent"= "latest" # pi
 "npm:@anthropic-ai/claude-code"    = "latest"
 "cargo:uv"                         = "latest"
 
