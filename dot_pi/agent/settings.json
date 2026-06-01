@@ -1,0 +1,62 @@
+{
+  "lastChangelogVersion": "0.78.0",
+  "defaultProvider": "opencode",
+  "defaultModel": "big-pickle",
+  "defaultThinkingLevel": "medium",
+  "permissions": {
+    "alwaysAllow": {
+      "bash": [
+        "git status",
+        "git log *",
+        "git diff *",
+        "git add *",
+        "git commit *",
+        "git push *",
+        "git pull *",
+        "git checkout *",
+        "git branch *",
+        "npm *",
+        "pip *",
+        "pip3 *",
+        "pytest *",
+        "python *",
+        "python3 *",
+        "node *",
+        "mkdir *",
+        "cp *",
+        "mv *",
+        "ls *",
+        "cat *",
+        "head *",
+        "tail *",
+        "pwd",
+        "echo *",
+        "which *",
+        "type *",
+        "cd *",
+        "grep *",
+        "find *",
+        "web_search *",
+        "fetch_content *",
+        "code_search *",
+        "get_search_content *",
+        "rig *"
+      ]
+    },
+    "directoryRules": {}
+  },
+  "packages": [
+    {
+      "source": "npm:pi-observational-memory"
+    },
+    {
+      "source": "npm:pi-mcp-adapter"
+    },
+    {
+      "source": "npm:pi-plan"
+    },
+    {
+      "source": "npm:pi-web-access"
+    }
+  ]
+}
