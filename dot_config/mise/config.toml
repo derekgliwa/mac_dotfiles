@@ -33,4 +33,5 @@ install_before = "3d"
 "github:git-ai-project/git-ai" = "latest"
 rust = "latest"
 claude = "latest"
+"npm:@opengsd/gsd-core" = "latest"
 
