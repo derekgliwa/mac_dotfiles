@@ -34,4 +34,5 @@ install_before = "3d"
 rust = "latest"
 claude = "latest"
 "npm:@opengsd/gsd-core" = "latest"
+"npm:@opengsd/gsd-pi" = "latest"
 
