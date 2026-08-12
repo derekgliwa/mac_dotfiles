@@ -1,7 +1,7 @@
 {
-  "lastChangelogVersion": "0.78.0",
-  "defaultProvider": "opencode",
-  "defaultModel": "big-pickle",
+  "lastChangelogVersion": "0.78.1",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "medium",
   "permissions": {
     "alwaysAllow": {
@@ -40,11 +40,17 @@
         "fetch_content *",
         "code_search *",
         "get_search_content *",
-        "rig *"
+        "rig *",
+        "gsd-tools *",
+        "gsd-core *"
       ]
     },
     "directoryRules": {}
   },
+  "skills": [
+    "~/.claude/skills"
+  ],
+  "enableSkillCommands": true,
   "packages": [
     {
       "source": "npm:pi-observational-memory"
@@ -57,6 +63,12 @@
     },
     {
       "source": "npm:pi-web-access"
+    },
+    {
+      "source": "npm:@opengsd/gsd-core"
+    },
+    {
+      "source": "npm:pi-subagents"
     }
   ]
 }

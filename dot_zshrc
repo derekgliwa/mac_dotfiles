@@ -18,3 +18,7 @@ for rc in "$HOME"/.zshrc.d/*.zsh(N); do
   . "$rc"
 done
 unset rc
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select
